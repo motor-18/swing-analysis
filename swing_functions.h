@@ -7,8 +7,8 @@
  * */
 
 
-#ifndef SWING_FNS_H
-#define SWING_FNS_H
+#ifndef SWING_FUNCTIONS_H
+#define SWING_FUNCTIONS_H
 
 typedef long index_t;
 typedef long time_t;
