@@ -39,6 +39,10 @@ index_t searchContinuityAboveValue(
     
     for (i = index_begin; i <= index_end ; i++)
     {
+        if (i > (index_end + win_length))
+        {
+            break;
+        }
         if (data[i] > threshold)
         {
             start = i;
