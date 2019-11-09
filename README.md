@@ -1,8 +1,8 @@
 # swing-analysis
-An small project to obtain higher level information from data generated from a baseball swing. The information obtained here can be used by itself or for even higher level insights.
+An small project to obtain higher level information from data generated from a swing. The information obtained here can be used by itself or for even higher level insights.
 
 # Credits
-Thanks to Diamond Kinetics of Pittsburgh PA for setting up this challenge and providing the data.
+Thanks to Diamond Kinetics of Pittsburgh PA.
 
 # Important dates
 Started November 2019
