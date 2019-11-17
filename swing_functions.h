@@ -10,6 +10,8 @@
 #ifndef SWING_FUNCTIONS_H
 #define SWING_FUNCTIONS_H
 
+/* TYPE DEFINTIONS */
+
 typedef long index_t;
 typedef long time_t;
 typedef double data_t;
@@ -25,6 +27,8 @@ typedef struct swing_data_struct
     data_t *gyro_y;
     data_t *gyro_z;
 } swing_t;
+
+/* CORE FUNCTION DEFINITIONS */
 
 index_t searchContinuityAboveValue(
     data_t*, 
@@ -58,5 +62,9 @@ index_t searchMultiContinuityWithinRange(
     data_t, 
     data_t, 
     index_t);
+
+/* HELPER FUNCTIONS */
+
+bool if_all_above_threshold(data_t *data, data_t threshold, index_t start, index_t end);
 
 #endif
