@@ -67,7 +67,7 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
     count_within_range = 0
 
     # preliminary checking for errors
-    if (indexBegin - indexEnd + 1) > winLength:
+    if (indexBegin - indexEnd + 1) < winLength:
         return errd.ERROR_TOO_SMALL
     if (data is None):
         return errd.ERROR_NO_DATA
@@ -85,11 +85,9 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
     
     # moving the sliding window
     for i in range(indexBegin - 1, indexEnd -1 , -1):
-        try:
-            data[i - winLength + 1] = data[i - winLength + 1]
-        except IndexError:
+        if (i - winLength + 1)<0:
             return errd.ERROR_NOT_ENOUGH
-        if ((data[i - 1] > thresholdLo) and (data[i - 1] < thresholdHi)):
+        if ((data[i + 1] > thresholdLo) and (data[i + 1] < thresholdHi)):
             count_within_range -= 1
         if ((data[i - winLength + 1] > thresholdLo) and (data[i - winLength + 1] < thresholdHi)):
             count_within_range += 1
