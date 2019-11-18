@@ -46,7 +46,7 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
     if (data is None):
         return None
     for i in range(indexBegin, indexBegin + winLength, 1):
-        if (data[i] > threshold):
+        if ((data[i] > thresholdLo) and (data[i] < thresholdHi)):
             count_within_range += 1
     if (count_within_range == winLength):
         return indexBegin
@@ -56,9 +56,9 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
             data[i + winLength - 1] = data[i + winLength - 1]
         except IndexError:
             return None
-        if (data[i - 1] > threshold):
+        if ((data[i - 1] > thresholdLo) and (data[i - 1] < thresholdHi)):
             count_within_range -= 1
-        if (data[i + winLength - 1] > threshold):
+        if ((data[i + winLength - 1] > thresholdLo) and (data[i + winLength - 1] < thresholdHi)):
             count_within_range += 1
         if (count_within_range == winLength):
             return i
