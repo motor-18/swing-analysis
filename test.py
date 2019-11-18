@@ -16,6 +16,16 @@ class TestFirst(unittest.TestCase):
         # testing basic operation
         result1 = searchContinuityAboveThreshold(data, 10, 50, 20, 5)
         self.assertEqual(result1, 20)
+    
+    def testBasicOp1(self):
+        # testing basic operation
+        result = searchContinuityAboveThreshold(data, 10, 50, 10, 5)
+        self.assertEqual(result, 10)
+    
+    def testBasicOp2(self):
+        # testing basic operation
+        result = searchContinuityAboveThreshold(data, 10, 50, 12, 5)
+        self.assertEqual(result, 12)
 
     def testTooSmall(self):
         # testing a failure case
