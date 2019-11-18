@@ -1,6 +1,14 @@
 import numpy as np
 import csv
 
+class error_definitions():
+    ERROR_TOO_SMALL = -1
+    ERROR_NO_DATA = -2
+    ERROR_NOT_FOUND = -3
+    ERROR_NOT_ENOUGH = -4
+
+errd = error_definitions()
+
 """
 searchContinuityAboveThreshold:
 Function to search if all elements of a certain length are above the threshold
@@ -16,28 +24,34 @@ None also returned in case of missing data, small data etc.
 """
 def searchContinuityAboveThreshold(data, indexBegin, indexEnd, threshold, winLength):
     count_above_thres = 0
-    if (indexEnd - indexBegin) > winLength:
-        return None
+
+    # preliminary error checking
+    if (indexEnd - indexBegin + 1) < winLength:
+        return errd.ERROR_TOO_SMALL
     if (data is None):
-        return None
+        return errd.ERROR_NO_DATA
+    
+    #initial work - starting the sliding window
     for i in range(indexBegin, indexBegin + winLength, 1):
         if (data[i] > threshold):
             count_above_thres += 1
     if (count_above_thres == winLength):
         return indexBegin
-    # by this point, we need to search more
-    for i in range(indexBegin + 1, indexEnd, 1):
+    
+    # moving the sliding window
+    for i in range(indexBegin + 1, indexEnd + 1, 1):
         try:
             data[i + winLength - 1] = data[i + winLength - 1]
         except IndexError:
-            return None
+            return errd.ERROR_NOT_ENOUGH
         if (data[i - 1] > threshold):
             count_above_thres -= 1
         if (data[i + winLength - 1] > threshold):
             count_above_thres += 1
         if (count_above_thres == winLength):
-            return i
-    return None
+            return i-1
+    return errd.ERROR_NOT_FOUND
+    #end of function
 
 def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thresholdHi, winLength):
     count_within_range = 0
