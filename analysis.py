@@ -1,13 +1,13 @@
 import numpy as np
 import csv
 
-class error_definitions():
+class errorDefinitions():
     ERROR_TOO_SMALL = -1
     ERROR_NO_DATA = -2
     ERROR_NOT_FOUND = -3
     ERROR_NOT_ENOUGH = -4
 
-errd = error_definitions()
+errd = errorDefinitions()
 
 """
 searchContinuityAboveThreshold:
