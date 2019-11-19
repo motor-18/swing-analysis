@@ -1,15 +1,12 @@
 # swing-analysis
 An small project to obtain higher level information from data generated from a swing. The information obtained here can be used by itself or for even higher level insights.
 
-# Credits
-Thanks to Diamond Kinetics of Pittsburgh PA.
-
 # Important dates
 Started November 2019
 
 # Requirements to use
-Python 2.7 Linux
-Ubuntu 18.04 Bionic
+- Python 2.7 Linux
+- Ubuntu 18.04 Bionic
 
 # Function commonalities
 - It is assumed that the index is an integer greater than or equal to zero.
