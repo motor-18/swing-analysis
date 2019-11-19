@@ -94,3 +94,7 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
         if (count_within_range == winLength):
             return i+1
     return errd.ERROR_NOT_FOUND
+
+def searchContinuityAboveValueTwoSignals(
+    data1, data2, indexBegin, indexEnd, threshold1, threshold2, winLength):
+    pass
