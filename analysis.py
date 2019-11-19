@@ -95,6 +95,63 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
             return i+1
     return errd.ERROR_NOT_FOUND
 
+
+"""
+searchContinuityAboveValueTwoSignals:
+Function to search for continuous values above threshold for two separate signals.
+Uses the same sliding window technique as earlier.
+Returns the index (a positive value) if found, else returns an error constant
+"""
 def searchContinuityAboveValueTwoSignals(
     data1, data2, indexBegin, indexEnd, threshold1, threshold2, winLength):
-    pass
+    
+    count_above_thres_1 = 0
+    count_above_thres_2 = 0
+
+    # preliminary error checking
+    if (indexEnd - indexBegin + 1) < winLength:
+        return errd.ERROR_TOO_SMALL
+    if ((data1 is None) or (data2 is None)):
+        return errd.ERROR_NO_DATA
+    
+    #initial work - starting the sliding window
+    for i in range(indexBegin, indexBegin + winLength, 1):
+        
+        try:
+            data1[i] = data1[i]
+            data2[i] = data2[i]
+        except IndexError:
+            return errd.ERROR_OUT_OF_BOUNDS
+        
+        if (data1[i] > threshold1):
+            count_above_thres_1 += 1
+        if (data2[i] > threshold2):
+            count_above_thres_2 += 1
+    
+    if ((count_above_thres_1 == winLength) and (count_above_thres_2 == winLength)):
+        return indexBegin
+    
+    # moving the sliding window
+    for i in range(indexBegin + 1, indexEnd + 1, 1):
+        
+        try:
+            data1[i + winLength - 1] = data1[i + winLength - 1]
+            data2[i + winLength - 1] = data2[i + winLength - 1]
+        except IndexError:
+            return errd.ERROR_OUT_OF_BOUNDS
+        
+        if (data1[i - 1] > threshold1):
+            count_above_thres_1 -= 1
+        if (data2[i - 1] > threshold2):
+            count_above_thres_2 -= 1
+        
+        if (data1[i + winLength - 1] > threshold1):
+            count_above_thres_1 += 1
+        if (data2[i + winLength - 1] > threshold2):
+            count_above_thres_2 += 1
+        
+        if ((count_above_thres_1 == winLength) and (count_above_thres_2 == winLength)):
+            return i-1
+        
+    return errd.ERROR_NOT_FOUND
+    #end of function
