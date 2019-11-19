@@ -76,7 +76,7 @@ class TestFirst(unittest.TestCase):
     def testEdgeCaseNotEnough(self):
         # testing failure edge case
         result8 = searchContinuityAboveValueTwoSignals(data1, data2, 5, 99, 99, 99, 10)
-        self.assertEqual(result8, errd.ERROR_NOT_ENOUGH)
+        self.assertEqual(result8, errd.ERROR_OUT_OF_BOUNDS)
 
 if __name__ == '__main__':
     unittest.main()

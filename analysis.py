@@ -5,7 +5,7 @@ class errorDefinitions():
     ERROR_TOO_SMALL = -1
     ERROR_NO_DATA = -2
     ERROR_NOT_FOUND = -3
-    ERROR_NOT_ENOUGH = -4
+    ERROR_OUT_OF_BOUNDS = -4
 
 errd = errorDefinitions()
 
@@ -36,7 +36,7 @@ def searchContinuityAboveThreshold(data, indexBegin, indexEnd, threshold, winLen
         try:
             data[i] = data[i]
         except IndexError:
-            return errd.ERROR_NOT_ENOUGH
+            return errd.ERROR_OUT_OF_BOUNDS
         if (data[i] > threshold):
             count_above_thres += 1
     if (count_above_thres == winLength):
@@ -47,7 +47,7 @@ def searchContinuityAboveThreshold(data, indexBegin, indexEnd, threshold, winLen
         try:
             data[i + winLength - 1] = data[i + winLength - 1]
         except IndexError:
-            return errd.ERROR_NOT_ENOUGH
+            return errd.ERROR_OUT_OF_BOUNDS
         if (data[i - 1] > threshold):
             count_above_thres -= 1
         if (data[i + winLength - 1] > threshold):
@@ -77,7 +77,7 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
         try:
             data[i] = data[i]
         except IndexError:
-            return errd.ERROR_NOT_ENOUGH
+            return errd.ERROR_OUT_OF_BOUNDS
         if ((data[i] > thresholdLo) and (data[i] < thresholdHi)):
             count_within_range += 1
     if (count_within_range == winLength):
@@ -86,7 +86,7 @@ def backSearchContinuityWithinRange(data, indexBegin, indexEnd, thresholdLo, thr
     # moving the sliding window
     for i in range(indexBegin - 1, indexEnd -1 , -1):
         if (i - winLength + 1)<0:
-            return errd.ERROR_NOT_ENOUGH
+            return errd.ERROR_OUT_OF_BOUNDS
         if ((data[i + 1] > thresholdLo) and (data[i + 1] < thresholdHi)):
             count_within_range -= 1
         if ((data[i - winLength + 1] > thresholdLo) and (data[i - winLength + 1] < thresholdHi)):
