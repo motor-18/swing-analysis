@@ -20,6 +20,8 @@ Ubuntu 18.04 Bionic
 
 - It is assumed that the value sent as "data" is a single dimensional array; If not, the out-of-bounds error checking will kick-in.
 
+- Unit testing of each function has been done, using different simple test cases. This is by no means complete, nor is it a formal verification.
+
 
 # Error constants used
 Currently, there are 4 constants used for denoting different types of errors.
@@ -54,3 +56,7 @@ The datastructure contains pointers (to arrays) to the following items:
 (floating point or variant thereof)
 
 The functions present here are to operate on a single (or two) datasets. Hence, the data structure is actually simply a list of pointers to all the elements. All elements in this datastructure are pointers in the array sense.
+
+# Future Work
+- To possibly combine the commonality of each function - sliding window, among other things - into one function.
+- To make functions more modular and more amenable to future modification/upgrades
