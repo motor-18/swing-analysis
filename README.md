@@ -12,6 +12,7 @@ Started November 2019
 - It is assumed that the index is an integer greater than or equal to zero.
 
 - Hence, there is a return value of either a positive or 0 value, which relates to index; or a negative value which relates to a possible error.
+(Exception for searchMultiContinuityWithinRange() - where a list of all suitable indices are returned)
 
 - There is error-checking for various errors in each function.
 
